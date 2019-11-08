@@ -1,5 +1,5 @@
 # python
-A Python Script for permutation&bootstrap test for two group datas
+permutation&bootstrap test is a Python Script for permutation&bootstrap test for two group datas
 
 Each data is separated by a space，such as 25 26 27 12........
 
