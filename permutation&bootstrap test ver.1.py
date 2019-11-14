@@ -10,8 +10,8 @@
 import numpy as np
 a=input("input group a:")
 b=input("input group b:")
-force_a = [int(n) for n in a.split()]
-force_b = [int(n) for n in b.split()]
+force_a = [int(n) for n in a.split(",")]
+force_b = [int(n) for n in b.split(",")]
 def permutation_sample(data1, data2):
     """Generate a permutation sample from two data sets."""
 
