@@ -49,13 +49,13 @@ def diff_of_means(data_1, data_2):
     return diff
     # Compute difference of mean impact force from experiment: empirical_diff_means
 
-empirical_diff_means = diff_of_means(force_a,force_b)#求得原始数据的平均值的差值
+empirical_diff_means = diff_of_means(force_a,force_b)
 
 # Draw 100,000 permutation replicates: perm_replicates
-perm_replicates = draw_perm_reps(force_a, force_b, diff_of_means, size=100000)#重复一万次实验之后统计差值分布情况
+perm_replicates = draw_perm_reps(force_a, force_b, diff_of_means, size=100000)
 
 # Compute p-value: p
-p1 = np.sum(perm_replicates >= empirical_diff_means) / len(perm_replicates)#计算统计差值中比原始数据差值还大的可能
+p1 = np.sum(perm_replicates >= empirical_diff_means) / len(perm_replicates)
 
 # Print the result
 print('Permutation Test P-value =', p1)
@@ -82,7 +82,7 @@ print('Bootstrap test for identical distributions P-value =', p2)
 def bootstrap_replicate_1d(data,func):
     bs_sample=np.random.choice(data,len(data))
     return func(bs_sample)
-#产生一次bootstrap sample，并对这个sample进行一次func操作
+
 def draw_bs_reps(data,func,size=1):
     bs_replicates=np.empty(size)
     for i in range(size):
