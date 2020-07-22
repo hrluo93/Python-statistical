@@ -96,7 +96,7 @@ mean_force = np.mean(forces_concat)
 force_a_shifted = force_a - np.mean(force_a) + mean_force
 force_b_shifted = force_b - np.mean(force_b) + mean_force
 
-# Compute 10,000 bootstrap replicates from shifted arrays
+# Compute 100,000 bootstrap replicates from shifted arrays
 bs_replicates_a = draw_bs_reps(force_a_shifted, np.mean, 100000)
 bs_replicates_b = draw_bs_reps(force_b_shifted, np.mean, 100000)
 
