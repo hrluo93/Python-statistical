@@ -136,7 +136,7 @@ print('Bootstrap hypothesis test for difference of means P-value =', p3)
 print('=====The next is Paired Samples t-test, If groupA and groupB are not Paired Samples please ignore error info!======')
 
 
-pairT=stats.ttest_rel(force_a,force_a)
+pairT=stats.ttest_rel(force_a,force_b)
 
 print('Paired Samples t-test',pairT)
 
