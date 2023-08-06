@@ -2,6 +2,7 @@ from scipy import stats
 import numpy as np
 
 #Each data is separated by a ',' such as when called "input group a" typing 25,26,27,12,34,73
+#https://github.com/hrluo93/Python-statistical
 
 a=input("input group a:")
 force_a = [int(n) for n in a.split(",")]
@@ -9,29 +10,31 @@ force_a = [int(n) for n in a.split(",")]
 b=input("input group b:")
 force_b = [int(n) for n in b.split(",")]
 
-
-ksgp1=stats.kstest(force_a ,'norm')
+#stats.kstest had bug when using scipy1.3x to 1.7x
+#ksgp1=stats.kstest(force_a,cdf='norm', alternative="two-sided")
+adgp1=stats.anderson(force_a,dist='norm')
 shpgp1=stats.shapiro(force_a)
-print('KstestResult-for-groupA',ksgp1)
-print('ShapiroResult-for-groupA',shpgp1)
-
-ksgp2=stats.kstest(force_b ,'norm')
+print('Anderson–Darling test-for-groupA: ',adgp1)
+print('Shapiro–Wilk test-for-groupA',shpgp1)
+#print('KstestResult-for-groupA',ksgp1)
+#ksgp2=stats.kstest(force_b,cdf='norm', alternative="two-sided")
+adgp2=stats.anderson(force_b,dist='norm')
 shpgp2=stats.shapiro(force_b)
-print('KstestResult-for-groupB',ksgp2)
-print('ShapiroResult-for-groupB',shpgp2)
-
+print('Anderson–Darling test-for-groupB: ',adgp2)
+print('Shapiro–Wilk test-for-groupB',shpgp2)
+#print('KstestResult-for-groupB',ksgp2)
 
 print(stats.levene(force_a, force_b))
 
 
 leventure=stats.ttest_ind(force_a,force_b,equal_var=True)
-print('LeveneResult>0.05 T-test',leventure)
+print('LeveneResult>0.05 T-test: ',leventure)
 
 levenfalse=stats.ttest_ind(force_a,force_b,equal_var=False)
-print('LeveneResult<0.05 T-test',levenfalse)
+print('LeveneResult<0.05 T-test (Welch’s T test): ',levenfalse)
 
 utest=stats.mannwhitneyu(force_a, force_b, use_continuity=True, alternative="two-sided")
-print('U-test',utest)
+print('U-test: ',utest)
 
 
 
@@ -138,7 +141,7 @@ print('=====The next is Paired Samples t-test, If groupA and groupB are not Pair
 
 pairT=stats.ttest_rel(force_a,force_b)
 
-print('Paired Samples t-test',pairT)
+print('Paired Samples t-test: ',pairT)
 
 Wilcoxon=stats.wilcoxon(force_a, force_b, zero_method='wilcox', correction=False, alternative='two-sided', mode='auto')
-print('Wilcoxon signed rank test',Wilcoxon)
+print('Wilcoxon signed rank test: ',Wilcoxon)
