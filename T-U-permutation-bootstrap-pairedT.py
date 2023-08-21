@@ -5,10 +5,10 @@ import numpy as np
 #https://github.com/hrluo93/Python-statistical
 
 a=input("input group a:")
-force_a = [int(n) for n in a.split(",")]
+force_a = [float(n) for n in a.split(",")]
 
 b=input("input group b:")
-force_b = [int(n) for n in b.split(",")]
+force_b = [float(n) for n in b.split(",")]
 
 #stats.kstest had bug when using scipy1.3x to 1.7x
 #ksgp1=stats.kstest(force_a,cdf='norm', alternative="two-sided")
